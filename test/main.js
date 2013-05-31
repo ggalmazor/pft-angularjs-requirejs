@@ -16,7 +16,7 @@ require.config({
   }
 });
 
-require(['require', 'specs/controllerSpec'], function () {
+require(['require', 'specs/controllerSpec', 'specs/serviceSpec'], function () {
   dump('test/main.js is starting requirejs');
   window.__karma__.start();
 });
