@@ -50,6 +50,7 @@ define(['app'], function (app) {
 
     function remove(todo) {
       storage.splice(storage.indexOf(todo), 1);
+      $rootScope.$broadcast("todos.updated");
     }
 
     function incomplete() {
@@ -58,11 +59,25 @@ define(['app'], function (app) {
       });
     }
 
+    function complete() {
+      return all().filter(function (todo) {
+        return todo.completed;
+      });
+    }
+
+    function removeComplete() {
+      complete().forEach(function(todo) {
+        remove(todo);
+      });
+    }
+
     return {
       all: all,
+      complete: complete,
       incomplete: incomplete,
       save: save,
-      remove: remove
+      remove: remove,
+      removeComplete: removeComplete
     }
   }]);
 });

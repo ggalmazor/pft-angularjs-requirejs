@@ -7,8 +7,8 @@ define(['app', 'ng/service', 'ng/directives'], function (app) {
           $scope.$on("todos.updated", function() {
             $scope.todos = todos.all();
             $scope.remainingCount = todos.incomplete().length;
+            $scope.completedCount = todos.complete().length;
           });
-
 
           function addTodo() {
             if (!$scope.newTodo)
@@ -45,13 +45,25 @@ define(['app', 'ng/service', 'ng/directives'], function (app) {
             });
           }
 
+          function filterBy(status) {
+            $scope.statusFilter = 'none' == status ? '' : {completed: 'completed' == status};
+          }
+
+          function clearCompletedTodos() {
+            todos.removeComplete();
+          }
+
           $scope.todos = todos.all();
           $scope.remainingCount = todos.incomplete().length;
+          $scope.completedCount = todos.complete().length;
+          $scope.statusFilter = '';
           $scope.addTodo = addTodo;
           $scope.removeTodo = removeTodo;
           $scope.editTodo = editTodo;
           $scope.doneEditing = doneEditing;
           $scope.save = save;
           $scope.markAll = markAll;
+          $scope.filterBy = filterBy;
+          $scope.clearCompletedTodos = clearCompletedTodos;
         }]);
 });
