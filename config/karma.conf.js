@@ -1,16 +1,26 @@
+// Ver: http://karma-runner.github.io/0.8/config/configuration-file.html
+
 basePath = '../';
 
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'app/lib/angular/angular.js',
-  'app/lib/angular/angular-*.js',
-  'test/lib/angular/angular-mocks.js',
-  'app/js/**/*.js',
-  'test/unit/**/*.js'
+  REQUIRE,
+  REQUIRE_ADAPTER,
+  'test/main.js',
+  {pattern: 'test/lib/**/*.js', included: false},
+  {pattern: 'app/js/**/*.js', included: false},
+  {pattern: 'app/lib/**/*.js', included: false},
+  {pattern: 'test/unit/**/*.js', included: false}
 ];
 
+exclude= [];
+
+reporters = ['progress', 'growl', 'coverage'];
+
 autoWatch = true;
+
+singleRun = false;
 
 browsers = ['Chrome'];
 
