@@ -28,3 +28,7 @@ junitReporter = {
   outputFile: 'test_out/unit.xml',
   suite: 'unit'
 };
+
+preprocessors = {
+  'app/js/**/*.js': 'coverage'
+};
