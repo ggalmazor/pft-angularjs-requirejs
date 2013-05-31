@@ -6,8 +6,9 @@ define(['angular', 'angular-mocks', 'ng/service'], function (angular) {
     beforeEach(function () {
       angular.mock.module('app');
 
-      inject(function (todoService) {
+      inject(function (todoService, $window) {
         todos = todoService;
+        $window.sessionStorage.clear();
       });
     });
 
